@@ -1,0 +1,202 @@
+{% extends "parent.html" %}
+{% block body%}
+<style>
+.abts ul li a{
+    display: block;
+    height: 40px;
+    width: 130px;
+    padding: 7px;
+    text-align:center;
+  }
+.abts ul li{
+    display: inline-block;
+    border-radius: 20px;
+    background-color:#39ac73;
+    width: 130px;
+}
+.abts li:hover{
+  background-color:#1a1a1a;
+}
+.abts a:hover{
+  color: white;
+}
+.abts a{
+  text-decoration: none;
+  color: white;
+  
+}
+.apply ul li a{
+  display: block;
+  height: 40px;
+  width: 130px;
+  padding: 7px;
+  text-align:center;
+}
+.apply ul li{
+  display: inline-block;
+  border-radius: 20px;
+  background-color:white;
+  width: 130px;
+  box-shadow:0px 3px 5px black;
+}
+.apply a{
+  text-decoration: none;
+  color: #39ac73;;
+  
+}
+.apply li:hover{
+  background-color:#39ac73;
+  box-shadow:0px 3px 7px white;
+}
+.apply a:hover{
+  color: white;
+}
+.middle{
+  float:right;
+}
+.ap ul li a{
+  display: block;
+  height: 40px;
+  width: 130px;
+  padding: 7px;
+  text-align:center;
+}
+.ap ul li{
+  display: inline-block;
+  border-radius: 20px;
+  background-color:#39ac73;
+  width: 130px;
+}
+.ap li:hover{
+background-color:#1a1a1a;
+}
+.ap a:hover{
+color: white;
+}
+.ap a{
+text-decoration: none;
+color: white;
+}
+.card{
+  float:left;
+  
+}
+
+</style>
+
+ <!-- start slider  -->
+
+  <div class="row" style="margin-left:0px;">
+    <div
+      
+      style="
+        background-image: url(../static/images/photo11.jpg); background-size:cover;
+        height: 600px;
+        width: 100%;">
+      <h1 style="text-align: center; margin-top: 170px; color: white; ">
+        Welcome to
+        <span class="animate__animated animate__bounce" style="color: #39ac73; animation-delay: 1s;"> Nalanda Open University</span>
+      </h1>
+      <p style="text-align: center; color: white">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.<br />
+        Numquam eius ipsam laudantium explicabo eligendi quos, <br />ea at
+        optio repellendus eos eveniet illum, fuga, neque aliquid labore
+        atque id facere consequuntur.
+      </p>
+      
+      <div class="slider" style="text-align: center;">
+        <ul style="list-style-type: none;">
+          <li class="about"><a href="{% url 'nouapp:aboutus' %}">ABOUT US</a></li>
+          <li class="read"><a href="{% url 'nouapp:contactus' %}">CONTACT US</a></li>
+      </ul>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+
+
+
+
+
+
+<div class="row" style="background-color: white;">
+  <div class="col-sm-6">
+    <h1 style="margin-left:20%; margin-top:100px;"><span style="border-left:2px solid green; padding:20px;">About <span style="color:green;">Us</span></span></h1>
+
+    <p style="margin-left:23%;"><span style="color:green;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit eligendi culpa eos, cum necessitatibus reiciendis optio dolore accusantium. 
+      Itaque accusamus </span><br><br>accusantium molestiae tempore sequi repudiandae tenetur ut dignissimos nam reiciendis? Lorem ipsum dolor, sit amet consectetur adipisicing elit, sit amet consectetur adipisicing elit. Impedit eligendi culpa eos, cum necessitatibus reiciendis optio dolore accusantium.</p><br>
+
+    <div class="abts" style="margin-left:19%;">
+      <ul style="list-style-type: none;"> <li><a href="{% url 'nouapp:aboutus' %}">ABOUT US</a></li></ul>
+    </div>
+  </div>
+        <div class=" col-sm-6">
+            <img src="../static/images/photo14.jpg" style="width:60%; margin:20%;">
+        </div>
+  </div>
+
+  <div class="row mt-5" style="width:80%; height:200px; margin:0px auto;">
+    <h1><span style="color:green;">News</span> & Events</h1>
+    <div class="row bg-success" style=" height:100px; margin:0px auto;">
+    <marquee onmouseover="stop()" onmouseout="start()">
+    <ul style="list-style:none; margin-top:30px; font-size:18px;">
+      {% for n in nw %}
+      <li style="display:inline; padding:20px; color:white;">{{n.newstext}}</li>
+      {% endfor %}
+    </ul>
+  </marquee>
+  </div>
+</div>
+
+
+              <!--courses-->
+
+  <div>
+    <div class="col-sm-6">
+      <h1 style="margin-left:19%; margin-top:100px;"><span style="border-left:2px solid green; padding:20px;"><span style="color:green;">Our</span> Courses</span></h1>
+      <p style="margin-left:22%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Perferendis cum placeat quam sunt molestias? Repudiandae natus </p>
+    </div>
+  </div>
+  
+    
+    <div class="mt-5" style="background-color:white;">
+      
+      <div class="card" style="margin-left:150px; width:251px;"><img src="../static/images/photo-1.png" class="card-img-top" style="height:250px; width:250px; "><h5 class="card-footer">Computer Engineering</h5><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,</p>
+        <div class="ap" style="">
+          <ul style="list-style-type: none;"> <li><a href="#">APPLY NOW</a></li></ul>
+            </div>
+      </div>
+      <div class="card " style="margin-left:55px; width:251px;"><img src="../static/images/photo-2.png" class="card-img-top" style="height:250px; width:250px;"><h5 class="card-footer" style="">Fashion & Technology</h5><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,</p>
+        <div class="ap" style="">
+          <ul style="list-style-type: none;"> <li><a href="#">APPLY NOW</a></li></ul>
+            </div>
+      </div>
+      <div class="card" style="margin-left:55px; width:251px;"><img src="../static/images/photo-3.png" class="card-img-top" style="height:250px; width:250px;"><h5 class="card-footer">Fashion & Technology</h5><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,</p>
+        <div class="ap" style="">
+          <ul style="list-style-type: none;"> <li><a href="#">APPLY NOW</a></li></ul>
+            </div>
+      </div>
+      <div class="card" style="margin-left:55px; width:251px;"><img src="../static/images/photo-6.png" class="card-img-top" style="height:250px; width:250px;"><h5 class="card-footer">Computer Engineering</h5><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,</p>
+        <div class="ap" style="">
+          <ul style="list-style-type: none;"> <li><a href="#">APPLY NOW</a></li></ul>
+            </div>
+      </div>
+    </div>
+  
+
+
+
+  
+<div class="row mt-5" style="background-image:url(../static/images/image-2.jpg);height:500px;background-size:cover;width:100%;">
+  <div class="" style="background-color:#39ac73d9; margin-left:12px;"><br><br><br>
+    <h1 style="color:white;text-align:center;">Admission Going On</h1>
+    <p style="color:white; text-align:center; ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, <br>accusantium perspiciatis quis animi soluta veritatis, a omnis eligendi nemo recusandae aliquid officiis fugiat estbr <br> reprehenderit adipisci pariatur! Amet, obcaecati suscipit.</p>
+    <div class="apply" style="text-align:center;">
+      <ul style="list-style-type: none;"> <li><a href="#">APPLY NOW</a></li></ul>
+        </div>
+  </div>
+</div>
+
+{% endblock %}

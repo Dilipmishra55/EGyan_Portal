@@ -1,0 +1,72 @@
+{% extends "parent.html" %}
+{% block body%}
+<script>
+  function validate()
+  {
+    var userid=document.getElementById("userid");
+    var password=document.getElementById("password");
+    if(userid.value=="" || userid==null)
+    {
+      alert('please enter userid');
+      userid.focus();
+    }
+    else if(password.value=="" || password.value==null)
+    {
+      alert("please enter password");
+      password.focus();
+    }
+    else
+    {
+      document.getElementById("frmlogin").submit();
+    }
+  }
+</script>
+
+
+<div style="background-image: linear-gradient(to bottom, rgba(51,51,51, 0.40), rgba(51, 51, 51,0.40)),
+url('../static/images/p5.jpg'); background-size:cover; height:300px;">
+  <h1 style="margin-left:15%; margin-top:100px;"><span style="color:white;">Login</span></h1>
+   <div style="background-color:#39ac73; margin-top:120px;  height:50px;">
+   <div class=" col-sm-12"><a href="{% url 'nouapp:index' %}" style="text-decoration:none; color:white; margin-left:15%; position:relative; top:10px; "><b>Home</b></a>
+     <span style="color:white; float:right; margin-right:15%; position:relative; top:10px;"><b>--> Login Page</b></span></div>
+   </div>
+  </div>
+ 
+
+
+
+
+
+
+
+<!--event.preventDefault is use to stop from autosubmit-->
+<div class="col-sm-4" style=" background-image: url(../static/images/photo-7.png); background-size:cover;"></div>
+<div
+  class="col-sm-8"
+  style="min-height: 700px;">
+<form class="form-group" onsubmit="event.preventDefault();validate();" method="POST" action="{% url 'nouapp:login' %}" id="frmlogin" style="width: 60%;  margin:160px auto; border-radius: 10px; box-shadow: 3px 3px 15px black; padding: 25px;">
+  {% csrf_token %}
+  <h1 style="text-align: center; color:#39ac73;">Login Form </h1>
+  {% if messages %}
+      {% for message in messages %}
+         <p style="text-align: center;">{{ message }}</p>
+      {% endfor %}
+  {% endif %}
+  <label>Enter User Id</label>
+  <input type="text" name="userid" class="form-control" id="userid" style="background: transparent;">
+  <label class="form-label">Enter Password</label>
+  <input type="password" name="password" class="form-control" id="password" style="background: transparent;"/>
+  <label class="form-label">Select User Type</label>
+  <select name="usertype" class="form-control" style="background: transparent;">
+    <option selected>-Select User Type-</option>
+    <option value="student">Student</option>
+    <option value="admin">Admin</option>
+
+  </select>
+  <button type="submit" class="btn mt-3" style="width: 50%; margin-left: 25%; background-color: #39ac73; color: white;">Login</button>
+
+
+
+</form>
+</div>
+{% endblock %}

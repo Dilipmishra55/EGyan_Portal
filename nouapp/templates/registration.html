@@ -1,0 +1,93 @@
+{% extends "parent.html" %}
+{% block body%}
+
+<div style="background-image: linear-gradient(to bottom, rgba(51,51,51, 0.62), rgba(51, 51, 51,0.78)),
+url('../static/images/p2.jpg'); background-size:cover; height:300px;">
+  <h1 style="margin-left:15%; margin-top:100px;"><span style="color:white;">Registration</span></h1>
+   <div style="background-color:#39ac73; margin-top:120px;  height:50px;">
+   <div class=" col-sm-12"><a href="{% url 'nouapp:index' %}" style="text-decoration:none; color:white; margin-left:15%; position:relative; top:10px; "><b>Home</b></a>
+     <span style="color:white; float:right; margin-right:15%; position:relative; top:10px;"><b>--> Registration Page</b></span></div>
+   </div>
+  </div>
+ 
+
+
+
+
+
+<div class="col-sm-4 mt-5" style="min-height: 700px; background-color: #39ac73d9;"></div>
+<div
+  class="col-sm-8"
+  style="min-height: 700px;">
+<form class="form-group" method="POST" action="{% url 'nouapp:registration' %}" style="width: 80%; margin: 50px auto; border-radius: 10px; box-shadow: 3px 3px 15px black; padding: 15px;">
+  {% csrf_token %}
+  <h1 style="text-align: center; color:#39ac73;">Student Registration Form</h1>
+   
+     {% if messages %}
+       {% for messages in messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+         <p>{{messages}}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+       {% endfor %}
+
+     {% endif %}
+  <label class="form-label">Enter Roll No</label>
+  <input type="number" name="rollno" placeholder="Enter Roll No" class="form-control" style="background: transparent;"/>
+  <label class="form-label">Enter Name</label>
+  <input type="text" name="name" placeholder="Enter Name" class="form-control" style="background: transparent;"/>
+  <label class="form-label">Enter Father Name</label>
+  <input type="text" name="fname" placeholder="Enter Father Name" class="form-control" style="background: transparent;"/>
+  <label class="form-label">Mother Name</label>
+  <input type="text" name="mname" placeholder="Enter Mother Name" class="form-control" style="background: transparent;"/>
+  <label class="form-label">Select Gender</label>
+  <input type="radio" name="gender" value="Male" class="form-check-input mt-2" style="background: transparent;"/>Male
+  <input type="radio" name="gender" value="Female" class="form-check-input mt-2" style="background: transparent;"/>Female<br/>
+  <label class="form-label">Enter Date Of Birth</label>
+  <input type="date" name="dob" class="form-control" style="background: transparent;"/>
+  <label class="form-label">Enter Address</label>
+  <textarea name="address" class="form-control" style="background: transparent;"></textarea>
+  <label class="form-label">Select Program</label>
+  <select name="program" class="form-control" style="background: transparent;">
+    <option selected>-Select Program-</option>
+    <option value="B.TECH">B.TECH</option>
+    <option value="M.TECH">M.TECH</option>
+  </select>
+
+  <label class="form-label">Select Branch</label>
+  <select name="branch" class="form-control" style="background: transparent;">
+    <option selected>-Select Branch-</option>
+    <option value="Computer science">Computer Science</option>
+    <option value="Information Technology">Information Technology</option>
+  </select>
+  <label class="form-label">Select Year</label>
+  <select name="year" class="form-control" style="background: transparent;">
+    <option selected>-Select Year-</option>
+    <option value="First Year">First Year</option>
+    <option value="Second Year">Second Year</option>
+    <option value="Third Year">Third Year</option>
+    <option value="Final Year">Final Year</option>
+  </select>
+  
+  <label class="form-label">Enter Contact No</label>
+  <input type="number" name="contactno" class="form-control" style="background: transparent;"/>
+  <label class="form-label">Enter Email Address</label>
+  <input type="text" name="emailaddress" class="form-control" style="background: transparent;"/>
+  <label>Enter Password</label>
+  <input type="password" name="password" class="form-control" style="background: transparent;">
+  <label>Confirm Password</label>
+  <input type="password" name="confirmpassword" class="form-control" style="background: transparent;">
+  <tr>
+    <td>Enter Captcha Code</td>
+    <td>
+      {{form.captcha}}
+    </td>
+  </tr>
+  <button type="submit" class="btn mt-3" style="width: 50%; margin-left: 25%; color: white; background-color: #39ac73;">Register</button>
+
+
+
+</form>
+</div>
+{% endblock %}

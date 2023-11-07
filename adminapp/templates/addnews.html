@@ -1,0 +1,48 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">News Management</h1>  
+            <form class="form-group" action="{% url 'adminapp:addnews' %}" method="POST">
+                {% csrf_token %}
+                <table class="table table-bordered text-light" style="width:60%;margin:auto;">
+                    <tr>
+                        <td>Enter News Contant</td>
+                        <td>
+                            <textarea name="newstext" class="form-control text-light" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            <button type="submit" class="btn btn-success">Add News</button>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </form> 
+            <br>
+            <table class="table table-bordered text-light">
+                <tr>
+                    <th>#</th>
+                    <th>News</th>
+                    <th>Posted Date</th>
+                    <th>Delete</th>
+                </tr>
+                {% for n in nw %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{n.newstext}}</td>
+                    <td>{{n.posteddate}}</td>
+                    <td>
+                        <a href="{% url 'adminapp:delnews' nid=n.nid %}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            
+        </div>
+    </div>
+{% endblock body %}

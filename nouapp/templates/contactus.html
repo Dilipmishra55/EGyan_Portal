@@ -1,0 +1,102 @@
+{% extends "parent.html" %}
+{% block body%}
+<script>
+  function validate()
+  {
+    var name=document.getElementById("name");
+    var contactno=document.getElementById("contactno");
+    var emailaddress=document.getElementById("emailaddress");
+    var emailexp=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (name.value==""  || name.value==null)
+    {
+      alert('please enter name');
+      name.focus();
+    }
+    else if(contactno.value=="" || contactno.value==null)
+    {
+      alert('please enter contactno')
+      contactno.focus();
+    }
+    else if(contactno.value.length!=10)
+    {
+      alert('please enter 10 digits');
+      contactno.focus();
+
+    }
+    else if(emailaddress.value=="" || emailaddress.value==null)
+    {
+      alert('please enter emailaddress');
+      emailaddress.focus();
+    }
+    else if(!emailexp.test(emailaddress.value))
+    {
+      alert('please enter valid email address');
+      emailaddress.focus();
+    }
+    else 
+    {
+      document.getElementById("frmenquiry").submit();
+    }
+  }
+
+</script>
+
+
+<div style="background-image:url(../static/images/p1.jpg); background-size:cover; height:300px;">
+  <h1 style="margin-left:15%; margin-top:100px;"><span style="color:white;">Contact Us</span></h1>
+   <div style="background-color:#39ac73; margin-top:120px;  height:50px;">
+   <div class=" col-sm-12"><a href="{% url 'nouapp:index' %}" style="text-decoration:none; color:white; margin-left:15%; position:relative; top:10px; "><b>Home</b></a>
+     <span style="color:white; float:right; margin-right:15%; position:relative; top:10px;"><b>--> Contact Page</b></span></div>
+   </div>
+  </div>
+ 
+
+
+
+
+<div class="col-sm-4 mt-5" style="min-height: 700px; background-color: #39ac73d9;"></div>
+<div
+  class="col-sm-8"
+  style="min-height: 700px;">
+  <form class="form-group" id="frmenquiry" onsubmit="event.preventDefault();validate();" action="{% url 'nouapp:contactus' %}" method="POST" style="width: 80%; background:transparent; border-radius: 10px; margin:50px auto; padding: 15px; box-shadow: 3px 3px 15px black;">
+  {% csrf_token %}
+            <h1 style="text-align: center; color: #39ac73; margin-top: 15px;">Enquiry Form</h1>
+            {% if messages %}
+               {% for messages in messages %}
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                   <p>{{messages}}</p>
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+               {% endfor %}
+            {% endif %}
+              
+    
+                <label class="form-label mt-2">Enter Name</label> 
+                <input type="text" name="name" class="form-control" id="name"  placeholder="Enter Name" style="background: transparent;"/>
+    
+                <label class="form-label mt-2">Select Gender </label>
+            
+                <input type="radio" name="gender" value="Male" class="form-check-input mt-2" style="margin-left: 15px; background: transparent;"/>&nbsp;Male
+                <input type="radio" name="gender" value="Female" class="form-check-input mt-2" style="background:transparent;"/>&nbsp;Female<br/>
+            
+                <label class="form-label mt-2">Enter Address</label>
+            
+                <textarea name="address" class="form-control" placeholder="Enter Address" style="background: transparent;"></textarea>
+             
+                <label class="form-label mt-2">Contact No</label>
+        
+                <input type="number" name="contactno" class="form-control" id="contactno" placeholder="Contact No" style="background:transparent;"/>
+       
+                <label class="form-label mt-2">Enter Email Address</label>
+        
+                <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Enter Email Address" style="background: transparent;"/>
+        
+                <label class="form-label mt-2">Enter Enquiry Text</label>
+        
+            <textarea name="enquirytext" class="form-control" placeholder="Enter Enquiry Text" style="background: transparent;"></textarea>
+        
+        <td><button type="submit" class="btn  mb-2 mt-3" style="width: 50%; margin-left: 25%; color: white; background-color: #39ac73;">submit</button>
+    
+  </form>
+</div>
+{% endblock %}

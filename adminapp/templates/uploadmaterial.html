@@ -1,0 +1,80 @@
+{% extends "adminparent.html" %}
+{% block body %}
+{% if messages %}
+       {% for messages in messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+         <p>{{messages}}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+       {% endfor %}
+     {% endif %}
+     
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Upload Study Material</h1>   
+            <form class="form-group w-50" style="margin:auto;" action="{% url 'adminapp:uploadmaterial' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% comment %} <table class="table table-bordered text-light"style="width:60%;margin: auto;"> {% endcomment %}
+                    <label class="form-label">Select Program</label>
+                    <select name="program" class="form-control text-light">
+                      <option selected>--Select Program--</option>
+                      <option value="B.TECH">B.TECH</option>
+                      <option value="M.TECH">M.TECH</option>
+                    </select><br>
+                  
+                    <label class="form-label">Select Branch</label>
+                    <select name="branch" class="form-control text-light">
+                      <option selected>--Select Branch--</option>
+                      <option value="Computer science">Computer Science</option>
+                      <option value="Information Technology">Information Technology</option>
+                    </select><br>
+                    <label class="form-label">Select Year</label>
+                    <select name="year" class="form-control text-light">
+                      <option selected>--Select Year--</option>
+                      <option value="First Year">First Year</option>
+                      <option value="Second Year">Second Year</option>
+                      <option value="Third Year">Third Year</option>
+                      <option value="Final Year">Final Year</option>
+                    </select><br>
+                    <tr>
+                        <td>Enter Subject</td>
+                        <td>
+                            <input type="text" name="subject" class="form-control text-light">
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <td>Select Material Type</td>
+                        <td>
+                            <select name="materialtype" class="form-control text-light">
+                                <option selected>--Select Material Type--</option>
+                                <option value="smat">Study Material</option>
+                                <option value="assign">Assignment</option>
+                                
+                            </select>
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <td>Enter File Name</td>
+                        <td>
+                            <input type="text" name="filename" class="form-control text-light">
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <td>Select File to Upload</td>
+                        <td>
+                            <input type="file" name="myfile" class="form-control text-light">
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <td clspan="2" style="text-align:center">
+                            <button type="submit" class="btn btn-primary w-50" style="margin-left:25%;">Upload</button>
+                        </td>
+                    </tr>
+
+
+                {% comment %} </table> {% endcomment %}
+            </form>
+              
+        </div>
+    </div>
+{% endblock body %}
